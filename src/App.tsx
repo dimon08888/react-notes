@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Header } from './header'
+import { NoteDetail } from './note-detail'
+import { Route, Router, Routes } from 'react-router-dom'
+import { AddNote } from './add-note'
+import { NoteList } from './note-list'
 
 function App() {
+  const [isGridView, setGridView] = useState(true)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header setGridView={setGridView} />
+      <Routes>
+        <Route path='/' element={<NoteList isGridView={isGridView} />} />
+        <Route path='/create-note' element={<AddNote />} />
+        <Route path='/note-detail/:id' element={<NoteDetail />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
