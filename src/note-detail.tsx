@@ -4,9 +4,10 @@ export function NoteDetail({ title, content }: { title?: string; content?: strin
   const params = useParams()
 
   return (
-    <div>
-      <h3>{title}</h3>
-      <div>{content}</div>
+    <div className='border-2 border-solid border-black my-2 max-w-xs relative'>
+      <button className='font-bold absolute right-1 top-1'>...</button>
+      <h3 className='ml-2'>{title}</h3>
+      <div className='ml-2'>{content}</div>
     </div>
   )
 }
